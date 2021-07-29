@@ -10,7 +10,7 @@ library(writexl)
 library(reshape2)
 
 # 1. Importar datos ------------------------------------------------------------
-ent <- "https://raw.githubusercontent.com/POF77/Proyecto.BEDU.ModuloII/main/Datos/"
+ent <- "https://raw.githubusercontent.com/POF77/Proyecto.BEDU.ModuloII/main/Datos_crudos/"
 
 df_gas0 <- read_csv(paste0(ent, "historical_emissions.csv"))
 df_tempe0 <- read_csv(paste0(ent, "temperature_wb.csv"))
@@ -79,7 +79,7 @@ df_neta <- df_bruta %>%
   filter(!is.na(tot_gas) & !is.na(year_deaths))
 
 # 5. Exportar tablas -----------------------------------------------------------
-sal <- "C:/Users/Usuario/OneDrive - El Colegio de México A.C/2. Proyectos varios/1. BEDU/Módulo 2.2 Python/Proyecto/"
+sal <- "C:/Users/Usuario/OneDrive - El Colegio de México A.C/2. Proyectos varios/1. BEDU/Módulo 2.2 Python/Proyecto/Datos_nuevos/"
 
 write.csv(df_bruta, paste0("", "datos_brutos", ".csv"), fileEncoding = "UTF-8")
 write.csv(df_neta, paste0("", "datos_netos", ".csv"), fileEncoding = "UTF-8")
