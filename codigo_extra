@@ -1,0 +1,512 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "orig_nbformat": 4,
+    "language_info": {
+      "name": "python",
+      "version": "3.9.6",
+      "mimetype": "text/x-python",
+      "codemirror_mode": {
+        "name": "ipython",
+        "version": 3
+      },
+      "pygments_lexer": "ipython3",
+      "nbconvert_exporter": "python",
+      "file_extension": ".py"
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3.9.6 64-bit"
+    },
+    "interpreter": {
+      "hash": "f40138163fcd8840a27d893df8ab9c7fa71905a679b6ff412bf749adfc03309a"
+    },
+    "colab": {
+      "name": "postwork-6.ipynb",
+      "provenance": []
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "qP18E7mZhOAW"
+      },
+      "source": [
+        "import requests\n",
+        "import pandas as pd\n",
+        "import numpy as np"
+      ],
+      "execution_count": 128,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "fL5mzY2BtrdT"
+      },
+      "source": [
+        "endpoint = \"https://www.climatewatchdata.org/api/v1/data/historical_emissions\"\n",
+        "parameters = {'regions': ['BRA','MEX'],\n",
+        "              'start_year': 1990,\n",
+        "              'end_year': 2018,\n",
+        "              'sort_col': 'year',\n",
+        "              'sort_dir': 'DESC'}\n",
+        "historical_emissions = requests.get(endpoint, params = parameters)"
+      ],
+      "execution_count": 357,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hnPthPS9trdW",
+        "outputId": "a67d7bbb-92c6-4cb3-89dd-9c1ec1c4ad8d",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "#Verificamos que salio bien nuestro requests\n",
+        "historical_emissions.status_code"
+      ],
+      "execution_count": 358,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "200"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 358
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "fDisJEGavdCV",
+        "outputId": "973538d7-2ca2-42b8-b91b-92400a816208",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "json = historical_emissions.json()\n",
+        "json.keys()"
+      ],
+      "execution_count": 359,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "dict_keys(['data', 'meta'])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 359
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "YnVCGLDlvjuY",
+        "outputId": "28520270-20bf-4a03-9fb8-7eaabd8b21db",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        }
+      },
+      "source": [
+        "data = json['data']\n",
+        "normalized = pd.json_normalize(data)\n",
+        "df = pd.DataFrame.from_dict(normalized)\n",
+        "df.head()"
+      ],
+      "execution_count": 360,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>id</th>\n",
+              "      <th>iso_code3</th>\n",
+              "      <th>country</th>\n",
+              "      <th>data_source</th>\n",
+              "      <th>sector</th>\n",
+              "      <th>gas</th>\n",
+              "      <th>unit</th>\n",
+              "      <th>emissions</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>658228</td>\n",
+              "      <td>MEX</td>\n",
+              "      <td>Mexico</td>\n",
+              "      <td>CAIT</td>\n",
+              "      <td>Total excluding LUCF</td>\n",
+              "      <td>All GHG</td>\n",
+              "      <td>MtCO₂e</td>\n",
+              "      <td>[{'year': 2011, 'value': 664.66}, {'year': 199...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>658229</td>\n",
+              "      <td>MEX</td>\n",
+              "      <td>Mexico</td>\n",
+              "      <td>CAIT</td>\n",
+              "      <td>Total including LUCF</td>\n",
+              "      <td>All GHG</td>\n",
+              "      <td>MtCO₂e</td>\n",
+              "      <td>[{'year': 2003, 'value': 492.69}, {'year': 201...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>658230</td>\n",
+              "      <td>MEX</td>\n",
+              "      <td>Mexico</td>\n",
+              "      <td>CAIT</td>\n",
+              "      <td>Energy</td>\n",
+              "      <td>All GHG</td>\n",
+              "      <td>MtCO₂e</td>\n",
+              "      <td>[{'year': 2017, 'value': 495.63}, {'year': 199...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>658231</td>\n",
+              "      <td>MEX</td>\n",
+              "      <td>Mexico</td>\n",
+              "      <td>CAIT</td>\n",
+              "      <td>Industrial Processes</td>\n",
+              "      <td>All GHG</td>\n",
+              "      <td>MtCO₂e</td>\n",
+              "      <td>[{'year': 2003, 'value': 21.35}, {'year': 1990...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>658232</td>\n",
+              "      <td>MEX</td>\n",
+              "      <td>Mexico</td>\n",
+              "      <td>CAIT</td>\n",
+              "      <td>Agriculture</td>\n",
+              "      <td>All GHG</td>\n",
+              "      <td>MtCO₂e</td>\n",
+              "      <td>[{'year': 1997, 'value': 85.51}, {'year': 1998...</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "       id iso_code3  ...    unit                                          emissions\n",
+              "0  658228       MEX  ...  MtCO₂e  [{'year': 2011, 'value': 664.66}, {'year': 199...\n",
+              "1  658229       MEX  ...  MtCO₂e  [{'year': 2003, 'value': 492.69}, {'year': 201...\n",
+              "2  658230       MEX  ...  MtCO₂e  [{'year': 2017, 'value': 495.63}, {'year': 199...\n",
+              "3  658231       MEX  ...  MtCO₂e  [{'year': 2003, 'value': 21.35}, {'year': 1990...\n",
+              "4  658232       MEX  ...  MtCO₂e  [{'year': 1997, 'value': 85.51}, {'year': 1998...\n",
+              "\n",
+              "[5 rows x 8 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 360
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "YPGmpEtu5rrH"
+      },
+      "source": [
+        "# Aquí hay un problema solo está detectando un país"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PtGAzMlo3fJi",
+        "outputId": "89770d25-fa56-415a-8a25-351575f8ff7f",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "df['country'].unique()"
+      ],
+      "execution_count": 361,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array(['Mexico'], dtype=object)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 361
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "-qQNO0E12DqT"
+      },
+      "source": [
+        "Observemos la columna de emisiones la cual no pudo ser normalizada, sin emabargo está claro que es una lista de diccionarios, por lo que vamos a extraer estos datos por separado."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "sBxsaSNMyFj7",
+        "outputId": "13d3287f-3977-44e6-b62b-1d4eb78cbd20",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "# Observemos los elementos del diccionario dos llaves('year' y 'value') y sus respectivos valores\n",
+        "print(df['emissions'][0][0].items())\n",
+        "print(df['emissions'][0][0].keys())\n",
+        "df['emissions'][0][0].values()"
+      ],
+      "execution_count": 317,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "dict_items([('year', 1990), ('value', 593.95)])\n",
+            "dict_keys(['year', 'value'])\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "dict_values([1990, 593.95])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 317
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "3_m19no1bZds",
+        "outputId": "d6ceb702-9adf-43d7-8974-1bcf92f35461",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "#Con get() podemos acceder al valor de cada llave del diccionario\n",
+        "print(df['emissions'][0][0].get('value'))\n",
+        "df['emissions'][0][0].get('year')"
+      ],
+      "execution_count": 318,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "593.95\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1990"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 318
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kefjetXha4f6"
+      },
+      "source": [
+        "# Definimos una funcion para extraer los datos\n",
+        "\n",
+        "def extraccion(lista, pais):\n",
+        "\n",
+        "  # Definimos listas donde almacenaremos los datos extraidos (años, valor, pais)\n",
+        "  lista_1 =[]\n",
+        "  lista_2 = []\n",
+        "  paises = []\n",
+        "\n",
+        "  for i in range(len(lista)):\n",
+        "    for y in range(len(lista[i])):\n",
+        "\n",
+        "      # Extraemos el pais\n",
+        "      paises.append(pais[i])\n",
+        " \n",
+        "      # Extraemos los años\n",
+        "      anio = lista[i][y].get('year')\n",
+        "      lista_1.append(anio)\n",
+        "\n",
+        "      # Extraemos los valores\n",
+        "      valor = lista[i][y].get('value')\n",
+        "      lista_2.append(valor)\n",
+        "\n",
+        "  # Unimos en un df\n",
+        "  data = pd.DataFrame({'country': paises, 'year': lista_1, 'value': lista_2})\n",
+        "\n",
+        "  return data"
+      ],
+      "execution_count": 319,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hhpX9Q5IldX7",
+        "outputId": "9c836706-a42a-451f-f982-09d8c1063475",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        }
+      },
+      "source": [
+        "data = extraccion(df[\"emissions\"], df[\"country\"])\n",
+        "data.head()"
+      ],
+      "execution_count": 320,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>country</th>\n",
+              "      <th>year</th>\n",
+              "      <th>value</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Brazil</td>\n",
+              "      <td>1990</td>\n",
+              "      <td>593.95</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>Brazil</td>\n",
+              "      <td>1991</td>\n",
+              "      <td>621.22</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>Brazil</td>\n",
+              "      <td>1992</td>\n",
+              "      <td>631.15</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>Brazil</td>\n",
+              "      <td>1993</td>\n",
+              "      <td>641.36</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>Brazil</td>\n",
+              "      <td>1994</td>\n",
+              "      <td>657.69</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "  country  year   value\n",
+              "0  Brazil  1990  593.95\n",
+              "1  Brazil  1991  621.22\n",
+              "2  Brazil  1992  631.15\n",
+              "3  Brazil  1993  641.36\n",
+              "4  Brazil  1994  657.69"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 320
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "xtfn-77o3HkC"
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
