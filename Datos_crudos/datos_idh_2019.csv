@@ -1,0 +1,190 @@
+﻿#,País,IDH 2019,nivel_desarrollo
+1,Norway,0.957,4
+2,Ireland,0.955,4
+2,Switzerland,0.955,4
+4,"Hong Kong, China (SAR)",0.949,4
+4,Iceland,0.949,4
+6,Germany,0.947,4
+7,Sweden,0.945,4
+8,Australia,0.944,4
+8,Netherlands,0.944,4
+10,Denmark,0.94,4
+11,Finland,0.938,4
+11,Singapore,0.938,4
+13,United Kingdom,0.932,4
+14,Belgium,0.931,4
+14,New Zealand,0.931,4
+16,Canada,0.929,4
+17,United States,0.926,4
+18,Austria,0.922,4
+19,Israel,0.919,4
+19,Japan,0.919,4
+19,Liechtenstein,0.919,4
+22,Slovenia,0.917,4
+23,Korea (Republic of),0.916,4
+23,Luxembourg,0.916,4
+25,Spain,0.904,4
+26,France,0.901,4
+27,Czechia,0.9,4
+28,Malta,0.895,4
+29,Estonia,0.892,4
+29,Italy,0.892,4
+31,United Arab Emirates,0.89,4
+32,Greece,0.888,4
+33,Cyprus,0.887,4
+34,Lithuania,0.882,4
+35,Poland,0.88,4
+36,Andorra,0.868,4
+37,Latvia,0.866,4
+38,Portugal,0.864,4
+39,Slovakia,0.86,4
+40,Hungary,0.854,4
+40,Saudi Arabia,0.854,4
+42,Bahrain,0.852,4
+43,Chile,0.851,4
+43,Croatia,0.851,4
+45,Qatar,0.848,4
+46,Argentina,0.845,4
+47,Brunei Darussalam,0.838,4
+48,Montenegro,0.829,4
+49,Romania,0.828,4
+50,Palau,0.826,4
+51,Kazakhstan,0.825,4
+52,Russian Federation,0.824,4
+53,Belarus,0.823,4
+54,Turkey,0.82,4
+55,Uruguay,0.817,4
+56,Bulgaria,0.816,4
+57,Panama,0.815,4
+58,Bahamas,0.814,4
+58,Barbados,0.814,4
+60,Oman,0.813,4
+61,Georgia,0.812,4
+62,Costa Rica,0.81,4
+62,Malaysia,0.81,4
+64,Kuwait,0.806,4
+64,Serbia,0.806,4
+66,Mauritius,0.804,4
+67,Seychelles,0.796,3
+67,Trinidad and Tobago,0.796,3
+69,Albania,0.795,3
+70,Cuba,0.783,3
+70,Iran (Islamic Republic of),0.783,3
+72,Sri Lanka,0.782,3
+73,Bosnia and Herzegovina,0.78,3
+74,Grenada,0.779,3
+74,Mexico,0.779,3
+74,Saint Kitts and Nevis,0.779,3
+74,Ukraine,0.779,3
+78,Antigua and Barbuda,0.778,3
+79,Peru,0.777,3
+79,Thailand,0.777,3
+81,Armenia,0.776,3
+82,North Macedonia,0.774,3
+83,Colombia,0.767,3
+84,Brazil,0.765,3
+85,China,0.761,3
+86,Ecuador,0.759,3
+86,Saint Lucia,0.759,3
+88,Azerbaijan,0.756,3
+88,Dominican Republic,0.756,3
+90,Moldova (Republic of),0.75,3
+91,Algeria,0.748,3
+92,Lebanon,0.744,3
+93,Fiji,0.743,3
+94,Dominica,0.742,3
+95,Maldives,0.74,3
+95,Tunisia,0.74,3
+97,Saint Vincent and the Grenadines,0.738,3
+97,Suriname,0.738,3
+99,Mongolia,0.737,3
+100,Botswana,0.735,3
+101,Jamaica,0.734,3
+102,Jordan,0.729,3
+103,Paraguay,0.728,3
+104,Tonga,0.725,3
+105,Libya,0.724,3
+106,Uzbekistan,0.72,3
+107,Bolivia (Plurinational State of),0.718,3
+107,Indonesia,0.718,3
+107,Philippines,0.718,3
+110,Belize,0.716,3
+111,Samoa,0.715,3
+111,Turkmenistan,0.715,3
+113,Venezuela (Bolivarian Republic of),0.711,3
+114,South Africa,0.709,3
+115,"Palestine, State of",0.708,3
+116,Egypt,0.707,3
+117,Marshall Islands,0.704,3
+117,Viet Nam,0.704,3
+119,Gabon,0.703,3
+120,Kyrgyzstan,0.697,2
+121,Morocco,0.686,2
+122,Guyana,0.682,2
+123,Iraq,0.674,2
+124,El Salvador,0.673,2
+125,Tajikistan,0.668,2
+126,Cabo Verde,0.665,2
+127,Guatemala,0.663,2
+128,Nicaragua,0.66,2
+129,Bhutan,0.654,2
+130,Namibia,0.646,2
+131,India,0.645,2
+132,Honduras,0.634,2
+133,Bangladesh,0.632,2
+134,Kiribati,0.63,2
+135,Sao Tome and Principe,0.625,2
+136,Micronesia (Federated States of),0.62,2
+137,Lao People's Democratic Republic,0.613,2
+138,Eswatini (Kingdom of),0.611,2
+138,Ghana,0.611,2
+140,Vanuatu,0.609,2
+141,Timor-Leste,0.606,2
+142,Nepal,0.602,2
+143,Kenya,0.601,2
+144,Cambodia,0.594,2
+145,Equatorial Guinea,0.592,2
+146,Zambia,0.584,2
+147,Myanmar,0.583,2
+148,Angola,0.581,2
+149,Congo,0.574,2
+150,Zimbabwe,0.571,2
+151,Solomon Islands,0.567,2
+151,Syrian Arab Republic,0.567,2
+153,Cameroon,0.563,2
+154,Pakistan,0.557,2
+155,Papua New Guinea,0.555,2
+156,Comoros,0.554,2
+157,Mauritania,0.546,1
+158,Benin,0.545,1
+159,Uganda,0.544,1
+160,Rwanda,0.543,1
+161,Nigeria,0.539,1
+162,Côte d'Ivoire,0.538,1
+163,Tanzania (United Republic of),0.529,1
+164,Madagascar,0.528,1
+165,Lesotho,0.527,1
+166,Djibouti,0.524,1
+167,Togo,0.515,1
+168,Senegal,0.512,1
+169,Afghanistan,0.511,1
+170,Haiti,0.51,1
+170,Sudan,0.51,1
+172,Gambia,0.496,1
+173,Ethiopia,0.485,1
+174,Malawi,0.483,1
+175,Congo (Democratic Republic of the),0.48,1
+175,Guinea-Bissau,0.48,1
+175,Liberia,0.48,1
+178,Guinea,0.477,1
+179,Yemen,0.47,1
+180,Eritrea,0.459,1
+181,Mozambique,0.456,1
+182,Burkina Faso,0.452,1
+182,Sierra Leone,0.452,1
+184,Mali,0.434,1
+185,Burundi,0.433,1
+185,South Sudan,0.433,1
+187,Chad,0.398,1
+188,Central African Republic,0.397,1
+189,Niger,0.394,1
