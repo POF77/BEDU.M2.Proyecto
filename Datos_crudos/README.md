@@ -7,7 +7,7 @@
 ## Promedio de temperatura
 - *Origen*: World Bank > Climate Change Knlowledge Portal
 - *URL*: https://climateknowledgeportal.worldbank.org/country/guinea/climate-data-historical
-
+- *Dataset*: [Temperature_wd.csv](https://github.com/POF77/Proyecto.BEDU.ModuloII/blob/main/Datos_crudos/temperature_wb.csv)
 ## Mortalidad por problemas respiratorios
 - *Origen*: World Health Organiztion
 - *URL*:
