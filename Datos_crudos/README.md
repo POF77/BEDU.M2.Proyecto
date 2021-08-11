@@ -10,6 +10,6 @@
 - *URL*: https://climateknowledgeportal.worldbank.org/country/guinea/climate-data-historical
 - *Dataset*: [Temperature_wd.csv](https://github.com/POF77/Proyecto.BEDU.ModuloII/blob/main/Datos_crudos/temperature_wb.csv)
 ## Mortalidad por problemas respiratorios
-- *Origen*: World Health Organiztion
+- *Origen*: Global Health Data Exchange
 - *URL*: http://ghdx.healthdata.org/gbd-results-tool
 - *Dataset*: [IHME-GBD_2019_DATA-462ae68d-1.csv](https://github.com/POF77/Proyecto.BEDU.ModuloII/blob/main/Datos_crudos/IHME-GBD_2019_DATA-462ae68d-1.csv)
