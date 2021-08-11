@@ -3,6 +3,7 @@
 ## Emisiones de gases efecto invernadero
 - *Origen*: Climate Watch (CAIT) - Country Greenhouse Gas
 - *URL*: https://www.climatewatchdata.org/data-explorer/
+- *Dataset*: [historical_emission_gases](https://github.com/POF77/Proyecto.BEDU.ModuloII/blob/main/Datos_crudos/historical_emissions_gases.csv)
 
 ## Promedio de temperatura
 - *Origen*: World Bank > Climate Change Knlowledge Portal
